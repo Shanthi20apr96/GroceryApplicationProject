@@ -21,20 +21,29 @@ public class HomePage {
 	WebElement infoicon;
 	@FindBy(xpath = "//a[@href ='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
 	WebElement newsinfoicon;
+	@FindBy(xpath = "//b[text() ='7rmart supermarket']")
+	WebElement apptitle;
 
-	public void clickOnAdminIcon() {
+	public HomePage clickOnAdminIcon() {
 		adminicon.click();
+		return this;
 	}
 
-	public void clickOnLogoutIcon() {
+	public LoginPage clickOnLogoutIcon() {
 		logouticon.click();
+		return new LoginPage(driver);
 	}
 
-	public void clickOnAdminUsersMoreInfoIcon() {
+	public AdminUsersPage clickOnAdminUsersMoreInfoIcon() {
 		infoicon.click();
+		return new AdminUsersPage(driver);
 	}
 
-	public void clickOnManageNewsMoreInfoIcon() {
+	public ManageNewsPage clickOnManageNewsMoreInfoIcon() {
 		newsinfoicon.click();
+		return new ManageNewsPage(driver);
 	}
+	public String getApplicationTitle() {
+		return apptitle.getText();
+}
 }

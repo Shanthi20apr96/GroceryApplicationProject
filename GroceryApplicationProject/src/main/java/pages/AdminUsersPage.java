@@ -6,8 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 public class AdminUsersPage {
 	public WebDriver driver;
+	WaitUtility wait = new WaitUtility();
+	PageUtility page = new PageUtility();
 	public AdminUsersPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -30,51 +35,78 @@ public class AdminUsersPage {
 	//Locating web elements for Resetting users list
 	@FindBy(xpath ="//a[@class='btn btn-rounded btn-warning']") WebElement resetbutton;
 	
+	//@FindBy(xpath ="//div [@class='alert alert-success alert-dismissible']") WebElement usercreatedmsg;
+	@FindBy(xpath = "//button[@class=\"close\"]") WebElement closebtn;
+	@FindBy(xpath ="//h1[text() ='Admin Users']") WebElement titledisplayed;
+	
 	//Methods for adding new users
-	public void clickOnNewButton() {
+	public AdminUsersPage clickOnNewButton() {
 		newbutton.click();
+		return this;
 	}
 	
-	public void addUserName(String newuser) {
+	public AdminUsersPage addUserName(String newuser) {
 		addnewusername.sendKeys(newuser);
+		return this;
 	}
 	
-	public void addPassword(String newuserpassword) {
+	public AdminUsersPage addPassword(String newuserpassword) {
 		addpassword.sendKeys(newuserpassword);
+		return this;
 	}
 	
-	public void selectDropdown() {
-		Select select = new Select(dropdown);
-		select.selectByValue("admin");
+	public AdminUsersPage selectDropdown() {
+		//Select select = new Select(dropdown);
+		//select.selectByValue("admin");
+		page.selectDropdownWithValue(dropdown, "admin");
+		return this;
 	}
 	
 	
-	public void clickSaveButton() {
+	public AdminUsersPage clickSaveButton() {
+		wait.waitUntilElementToBeClickable(driver, savebutton);
 		savebutton.click();
+		return this;
 	}
 	
 	// methods for Searching a user
 	
-	public void clickOnSearchButton() {
+	public AdminUsersPage clickOnSearchButton() {
 		searchbutton.click();
+		return this;
 	}
-	public void searchForUserName(String searchusername) {
+	public AdminUsersPage searchForUserName(String searchusername) {
 		searchforusername.sendKeys(searchusername);
+		return this;
 	}
 	
-	public void searchForUserType() {
-		Select select = new Select(searchforusertype);
-		select.selectByValue("admin");
+	public AdminUsersPage searchForUserType() {
+		//Select select = new Select(searchforusertype);
+		//select.selectByValue("admin");
+		page.selectDropdownWithIndex(searchforusertype, 0);
+		return this;
 	}
-	public void performSearch() {
+	public AdminUsersPage performSearch() {
 		performsearch.click();
+		return this;
 	}
 	
 	//methods for resetting users list
 	
-	public void clickOnResetButton() {
+	public AdminUsersPage clickOnResetButton() {
 		resetbutton.click();
+		return this;
 	}
+	 //public String userCreatedMsg() {
+		// return usercreatedmsg.getText();
+		 
+	 public boolean verifyClosebuttonIsDisplayed() {
+		 return closebtn.isDisplayed();
+	 }
+	 
+	 public String verifyAdminUserTitle() {
+		 return titledisplayed.getText();
+	 }
 	
 	
 }

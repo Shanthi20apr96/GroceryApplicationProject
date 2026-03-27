@@ -22,42 +22,57 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']") WebElement searchbtn;
 	@FindBy(xpath = "//input[@class='form-control' and @name ='un']") WebElement newstitle;
 	@FindBy(xpath ="//button[@class='btn btn-danger btn-fix' and @name ='Search']") WebElement performsearch;
+	@FindBy(xpath ="//h1[text() ='Manage News']") WebElement titledisplayed;
 	
 	
 	//Locating elements to reset news
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']") WebElement resetbtn;
 
 	
-	
+	@FindBy(xpath = "//button[@class='close']") WebElement closebtn;
 	//methods to add news
 	
-	public void clickOnAddNewsButton() {
+	public ManageNewsPage clickOnAddNewsButton() {
 		addbtn.click();
+		return this;
 	}
-	public void enterNews(String newsheadline) {
+	public ManageNewsPage enterNews(String newsheadline) {
 		enternewsdata.sendKeys(newsheadline);
+		return this;
 	}
-	public void clickOnSaveNewsButton() {
+	public ManageNewsPage clickOnSaveNewsButton() {
 		savebtn.click();
+		return this;
 	}
 	
 	//methods to search news
 	
-	public void clickOnSearchButton() {
+	public ManageNewsPage clickOnSearchButton() {
 		searchbtn.click();
+		return this;
 	}
 	
-	public void searchforNews(String newsheading) {
+	public ManageNewsPage searchforNews(String newsheading) {
 		newstitle.sendKeys(newsheading);
+		return this;
 		
 	}
 	
-	public void performSearch() {
+	public ManageNewsPage performSearch() {
 		performsearch.click();
+		return this;
 	}
 	
 	//method to reset news
-	public void clickOnResetButton() {
+	public ManageNewsPage clickOnResetButton() {
 		resetbtn.click();
+		return this;
 	}
+	
+	 public boolean verifyClosebuttonIsDisplayed() {
+		 return closebtn.isDisplayed();
+	 }
+	 public String verifyManageNewsTitle() {
+		 return titledisplayed.getText();
+}
 }
