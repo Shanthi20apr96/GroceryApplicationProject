@@ -31,12 +31,8 @@ public class AdminUsersTest extends TestNGBase {
 		FakerUtiity faker = new FakerUtiity();
 		String newuser = faker.createRandomUserName();
 		String newuserpassword = faker.createRandomPassword();
-		admin.clickOnNewButton().addUserName(newuser).addPassword(newuserpassword).selectDropdown().clickSaveButton();
-		//String actual = admin.userCreatedMsg();
-		//System.out.println(actual);
-		//String expected ="Alert!\n"+ "User Created Successfully";
-		//System.out.println(expected);
-		//Assert.assertEquals(actual, expected, "User is unable to add new users");
+		String usertype = ExcelUtility.readStringData(0, 2, "AdminUsersPage");
+		admin.clickOnNewButton().addUserName(newuser).addPassword(newuserpassword).selectDropdown(usertype).clickSaveButton();
 		boolean isClosebtndisplayed = admin.verifyClosebuttonIsDisplayed();
 		Assert.assertTrue(isClosebtndisplayed, Constants.ADDNEWUSERSERROR);
 		
@@ -57,7 +53,7 @@ public class AdminUsersTest extends TestNGBase {
 		assertEquals(actual, expected, Constants.SEARCHUSERLISTERROR);
 	}
 	
-	@Test
+	@Test(description = "validating user is able to reset users list")
 	public void verifyUserIsAbleToResetUsersList() throws IOException {
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
@@ -65,7 +61,6 @@ public class AdminUsersTest extends TestNGBase {
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
 		home =login.clickOnSignButton();
 		admin =home.clickOnAdminUsersMoreInfoIcon();
-		AdminUsersPage admin = new AdminUsersPage(driver);
 		admin.clickOnResetButton();
 		String actual = admin.verifyAdminUserTitle();
 		String expected = "Admin Users";

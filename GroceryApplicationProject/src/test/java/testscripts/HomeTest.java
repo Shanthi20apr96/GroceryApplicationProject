@@ -16,7 +16,7 @@ public class HomeTest extends TestNGBase {
 	HomePage home;
 	@Test(description = " validating user is able to succesfully logout", retryAnalyzer = retrymechanism.Retry.class)
 	public void verifyUserIsAbleToSuccessfullyLogout() throws IOException {
-		String username = ExcelUtility.readStringData(10, 0, "LoginPage");
+		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);

@@ -14,16 +14,11 @@ public class LoginPage {
 
 	}
 
-	@FindBy(name = "username")
-	WebElement usernamefield;
-	@FindBy(name = "password")
-	WebElement passwordfield;
-	@FindBy(xpath = "//button[text() = 'Sign In']")
-	WebElement signinbtn;
-	@FindBy(xpath = "//p[text() ='Dashboard']")
-	WebElement dashboardtile;
-	@FindBy(xpath = "//b[text() ='7rmart supermarket']")
-	WebElement apptitle;
+	@FindBy(name = "username") WebElement usernamefield;
+	@FindBy(name = "password") WebElement passwordfield;
+	@FindBy(xpath = "//button[text() = 'Sign In']")	WebElement signinbtn;
+	@FindBy(xpath = "//p[text() ='Dashboard']")	WebElement dashboardtile;
+	@FindBy(xpath = "//b[text() ='7rmart supermarket']") WebElement apptitle;
 
 	public LoginPage enterUsernameOnUsernameField(String username) {
 		usernamefield.sendKeys(username);

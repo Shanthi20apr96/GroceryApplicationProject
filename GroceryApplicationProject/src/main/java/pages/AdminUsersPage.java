@@ -55,10 +55,10 @@ public class AdminUsersPage {
 		return this;
 	}
 	
-	public AdminUsersPage selectDropdown() {
+	public AdminUsersPage selectDropdown(String usertype) {
 		//Select select = new Select(dropdown);
 		//select.selectByValue("admin");
-		page.selectDropdownWithValue(dropdown, "admin");
+		page.selectDropdownWithValue(dropdown, usertype);
 		return this;
 	}
 	
