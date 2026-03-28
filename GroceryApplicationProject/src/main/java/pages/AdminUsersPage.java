@@ -11,6 +11,7 @@ import utilities.WaitUtility;
 
 public class AdminUsersPage {
 	public WebDriver driver;
+	public static int index =0;
 	WaitUtility wait = new WaitUtility();
 	PageUtility page = new PageUtility();
 	public AdminUsersPage(WebDriver driver) {
@@ -35,8 +36,8 @@ public class AdminUsersPage {
 	//Locating web elements for Resetting users list
 	@FindBy(xpath ="//a[@class='btn btn-rounded btn-warning']") WebElement resetbutton;
 	
-	//@FindBy(xpath ="//div [@class='alert alert-success alert-dismissible']") WebElement usercreatedmsg;
-	@FindBy(xpath = "//button[@class=\"close\"]") WebElement closebtn;
+	
+	@FindBy(xpath = "//button[@class='close']") WebElement closebtn;
 	@FindBy(xpath ="//h1[text() ='Admin Users']") WebElement titledisplayed;
 	
 	//Methods for adding new users
@@ -83,7 +84,7 @@ public class AdminUsersPage {
 	public AdminUsersPage searchForUserType() {
 		//Select select = new Select(searchforusertype);
 		//select.selectByValue("admin");
-		page.selectDropdownWithIndex(searchforusertype, 0);
+		page.selectDropdownWithIndex(searchforusertype, index);
 		return this;
 	}
 	public AdminUsersPage performSearch() {

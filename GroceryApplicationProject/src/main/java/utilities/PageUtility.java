@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 public class PageUtility {
 	 public void selectDropdownWithValue(WebElement element, String value) { 
 		  	Select object = new Select(element); 
-	 		object.selectByValue(value); 
-	  
+	 		object.selectByValue(value);  
 	 	}
 	 public void selectDropdownWithIndex(WebElement element, int index) {
 		 Select object = new Select(element);
@@ -23,5 +22,8 @@ public class PageUtility {
 		Actions act = new Actions(driver);
 		act.moveToElement(element).build().perform();
 	}
-		
+	public void selectDropdownWithVisibleText(WebElement element, String text) { 
+	  	Select object = new Select(element); 
+ 		object.selectByVisibleText(text); 
+	}
 }
